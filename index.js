@@ -8,17 +8,20 @@ const todos = [
     {
         "id": 123,
         "name":"Walk the dog",
-        "urgency": 2
+        "urgency": 2,
+        "done": false
     },
     {
         "id": 234,
         "name": "Wash the car",
-        "urgency": 1
+        "urgency": 1,
+        "done": false,
     },
     {
         "id": 456,
         "name":"Clean the toilet",
-        "urgency": 3
+        "urgency": 3,
+        "done": false
     }
 ];  
 
@@ -37,7 +40,19 @@ function displayTasks(todos) {
 // the createTask function will modify the todos array
 // which is why it needs to recieve a parameter (if we don't want to use global variables)
 function createTask(todos) {
-
+    const name = prompt("Enter the name of the task: ");
+    const urgency = parseInt(prompt("Enter the urgency of the task (1 to 5): "));
+    const newTask = {
+        // the purpose of the id is to give each task an unique identity
+        "id": Math.floor(Math.random() * 10000),
+        "name": name,
+        "urgency":urgency,
+        "done": false
+    }
+ 
+    // add the new task to the array
+    todos.push(newTask);
 }
 
+createTask(todos);
 displayTasks(todos);
